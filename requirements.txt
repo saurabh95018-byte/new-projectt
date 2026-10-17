@@ -1,0 +1,21 @@
+# Bidplot AI requirements
+
+# Runtime
+Node.js >= 20
+
+# Required for proposal generation
+OPENAI_API_KEY
+
+# Optional environment variables
+# OPENAI_BASE_URL
+# OPENAI_MODEL
+# PORT
+
+# Dependencies
+# No third-party npm packages are required.
+# Node.js built-in modules are used by the server.
+
+# Commands
+# npm install
+# npm test
+# npm start
