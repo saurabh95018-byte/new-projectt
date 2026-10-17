@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f5">
+    <meta name="description" content="Write thoughtful, tailored Upwork proposals with Bidplot AI.">
+    <title>Bidplot — Win work that fits</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="Bidplot home">
+          <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 23.5 13.4 8l4.2 10.1 2.2-5.2L25 23.5M9.3 18h5.2m4.7 0h4.4"/></svg></span>
+          <span>bidplot<span class="brand-ai">AI</span></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav">
+          <a class="nav-link active" href="#dashboard" data-nav="dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="4" rx="2"/><rect x="13.5" y="11.5" width="7" height="9" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/></svg>Overview
+          </a>
+          <a class="nav-link" href="#write" data-nav="write">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15.5 5.5 3 3M4 20l4.2-.8L19.5 8a2.1 2.1 0 0 0-3-3L5.2 16.2 4 20Z"/><path d="M12 20h8"/></svg>New proposal<span class="nav-plus">+</span>
+          </a>
+          <a class="nav-link" href="#saved" data-nav="saved">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12a1.5 1.5 0 0 1 1.5 1.5v14L12 16l-7.5 4V6A1.5 1.5 0 0 1 6 4.5Z"/></svg>My proposals<span class="saved-count" id="saved-count">0</span>
+          </a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-tip">
+            <span class="tip-sparkle">✳</span>
+            <div><strong>A little reminder</strong><p>Your best proposal sounds like you, just a little more focused.</p></div>
+          </div>
+          <button class="profile-button" id="profile-button" type="button">
+            <span class="avatar">A</span><span class="profile-copy"><strong id="sidebar-name">Your profile</strong><small>Freelancer</small></span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          <div class="topbar-right"><span class="local-badge"><span class="status-dot"></span> Your work stays private</span><button class="icon-button" id="help-button" aria-label="About Bidplot" title="About Bidplot" type="button">?</button></div>
+        </header>
+
+        <section class="page-section" id="dashboard-section">
+          <div class="welcome-row">
+            <div><p class="eyebrow">YOUR FREELANCE WORKSPACE</p><h1>Make your next move <span class="heading-accent">count.</span></h1><p class="welcome-subtitle">Thoughtful proposals start with a little less blank-page staring.</p></div>
+            <button class="button button-primary start-button" data-action="new-proposal" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Write a proposal</button>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon green-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12a1.5 1.5 0 0 1 1.5 1.5v14L12 16l-7.5 4V6A1.5 1.5 0 0 1 6 4.5Z"/></svg></div><span class="stat-label">Proposals saved</span><strong class="stat-number" id="stat-saved">0</strong><span class="stat-footnote">Your words, ready when you are</span></article>
+            <article class="stat-card"><div class="stat-icon lavender-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7"/><path d="M3 19.5h18"/></svg></div><span class="stat-label">Drafts this week</span><strong class="stat-number" id="stat-week">0</strong><span class="stat-footnote">One thoughtful bid at a time</span></article>
+            <article class="stat-card stat-note"><span class="note-star">✳</span><div><span class="stat-label">A good proposal does one thing</span><strong class="note-copy">It makes the client feel <em>understood.</em></strong><button class="text-button" data-action="new-proposal" type="button">Let's write one <span aria-hidden="true">→</span></button></div></article>
+          </div>
+
+          <div class="section-heading"><div><h2>Recently saved</h2><p>Your best-fit opportunities, all in one place.</p></div><button class="text-button" data-nav="saved" type="button">View all <span aria-hidden="true">→</span></button></div>
+          <div class="saved-list" id="recent-list"></div>
+        </section>
+
+        <section class="page-section editor-section hidden" id="editor-section">
+          <div class="editor-heading">
+            <div><button class="back-link" data-nav="dashboard" type="button"><span aria-hidden="true">←</span> Back to overview</button><p class="eyebrow">A GOOD FIT STARTS HERE</p><h1>Let's make it <span class="heading-accent">personal.</span></h1><p class="welcome-subtitle">A few details help us write a proposal that sounds like you.</p></div>
+            <div class="step-pill"><span>✳</span> YOUR NEXT OPPORTUNITY</div>
+          </div>
+
+          <div class="editor-grid">
+            <form class="form-card" id="proposal-form">
+              <div class="card-heading"><span class="step-number">01</span><div><h2>The opportunity</h2><p>What is the client looking for?</p></div></div>
+              <label class="field-label" for="job-title">Job title <span class="required">*</span></label>
+              <input id="job-title" name="jobTitle" maxlength="160" placeholder="e.g. Brand designer for a new coffee company" required>
+              <label class="field-label field-spaced" for="job-description">Job description <span class="required">*</span><span class="label-hint">Paste the details that matter</span></label>
+              <textarea id="job-description" name="jobDescription" rows="6" maxlength="12000" minlength="40" placeholder="What does the client need? Include goals, deliverables, or any details you want your proposal to address." required></textarea>
+              <div class="field-meta"><span>Only shared with your AI provider to generate a draft.</span><span id="description-count">0 / 12,000</span></div>
+              <label class="field-label field-spaced" for="skills">Your relevant skills <span class="label-hint">Optional</span></label>
+              <input id="skills" name="skills" maxlength="1000" placeholder="e.g. Figma, brand strategy, visual identity">
+
+              <div class="form-divider"></div>
+              <div class="card-heading compact-heading"><span class="step-number">02</span><div><h2>A little about you</h2><p>Give the proposal something real to say.</p></div></div>
+              <label class="field-label" for="experience">Experience & proof points <span class="label-hint">Optional</span></label>
+              <textarea id="experience" name="experience" rows="3" maxlength="4000" placeholder="Relevant projects, years of experience, or results you can honestly share."></textarea>
+              <div class="split-fields">
+                <div><label class="field-label" for="rate">Rate or budget <span class="label-hint">Optional</span></label><input id="rate" name="rate" maxlength="80" placeholder="e.g. $45/hr"></div>
+                <div><label class="field-label" for="tone">Proposal tone</label><select id="tone" name="tone"><option>Confident and friendly</option><option>Warm and conversational</option><option>Direct and professional</option><option>Creative and energetic</option></select></div>
+              </div>
+              <button class="button button-primary generate-button" id="generate-button" type="submit"><span class="button-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg>Draft my proposal</span><span class="loading-label"><span class="spinner"></span> Finding the right words...</span><span aria-hidden="true">→</span></button>
+              <p class="form-disclaimer"><span aria-hidden="true">✳</span> Your draft is a starting point. Review every detail before you send it.</p>
+              <p class="form-error hidden" id="form-error" role="alert"></p>
+            </form>
+
+            <aside class="preview-card" aria-label="Proposal preview">
+              <div class="preview-topline"><span class="preview-label"><span class="preview-dot"></span> YOUR DRAFT</span><span class="ai-badge"><span>✳</span> BIDPLOT AI</span></div>
+              <div class="preview-body" id="proposal-preview" aria-live="polite"><div class="empty-preview"><span class="empty-sparkle">✳</span><h3>Your next great proposal<br>starts right here.</h3><p>Share a little about the opportunity and we'll help you find the words.</p><div class="preview-decoration"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+              <div class="preview-footer"><span id="word-count">0 words</span><div class="preview-actions"><button class="button button-secondary" id="copy-button" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2"/></svg>Copy</button><button class="button button-save" id="save-button" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12a1.5 1.5 0 0 1 1.5 1.5v14L12 16l-7.5 4V6A1.5 1.5 0 0 1 6 4.5Z"/></svg>Save draft</button></div></div>
+            </aside>
+          </div>
+          <p class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg>Your drafts are saved in this browser. Bidplot never submits proposals on your behalf.</p>
+        </section>
+
+        <section class="page-section hidden" id="saved-section">
+          <div class="welcome-row"><div><p class="eyebrow">YOUR WORK, AT YOUR PACE</p><h1>Worth keeping <span class="heading-accent">close.</span></h1><p class="welcome-subtitle">Every saved proposal is yours to refine, reuse, or remove.</p></div><button class="button button-primary start-button" data-action="new-proposal" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Write a proposal</button></div>
+          <div class="saved-list saved-page-list" id="all-saved-list"></div>
+        </section>
+        <footer class="page-footer"><span>Made for independent minds <span class="footer-heart">✳</span></span><span>Bidplot helps you write. You make the connection.</span></footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

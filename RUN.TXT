@@ -1,0 +1,4 @@
+cd "C:\Users\win-11\OneDrive\Desktop\new projectt"
+$secureKey = Read-Host "Paste your real OpenAI API key" -AsSecureString
+$env:OPENAI_API_KEY = [System.Net.NetworkCredential]::new("", $secureKey).Password
+npm start
