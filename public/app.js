@@ -13,6 +13,16 @@ let currentProposal = "";
 let currentJobTitle = "";
 let toastTimer;
 
+function initFuturisticEffects() {
+  const root = document.documentElement;
+  document.addEventListener("pointermove", (event) => {
+    const x = (event.clientX / window.innerWidth) * 100;
+    const y = (event.clientY / window.innerHeight) * 100;
+    root.style.setProperty("--pointer-x", `${x}%`);
+    root.style.setProperty("--pointer-y", `${y}%`);
+  });
+}
+
 function readStored(key, fallback) {
   try {
     const value = localStorage.getItem(key);
@@ -183,6 +193,8 @@ document.addEventListener("click", (event) => {
   }
   if (event.target.closest('[data-action="new-proposal"]')) newProposal();
 });
+
+initFuturisticEffects();
 
 document.querySelector("#profile-button").addEventListener("click", () => {
   const current = readStored(storageKeys.profile, {});
